@@ -173,8 +173,9 @@
             right: 0;
             bottom: 0;
             background-image: 
-                radial-gradient(circle at 20% 50%, rgba(0, 98, 155, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 163, 224, 0.03) 0%, transparent 50%);
+                linear-gradient(90deg, rgba(0, 98, 155, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 98, 155, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
             pointer-events: none;
         }
 
@@ -213,34 +214,6 @@
             margin-bottom: 2.5rem;
             font-weight: 400;
             max-width: 540px;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--ieee-blue);
-            line-height: 1;
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--text-tertiary);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
         .cta-buttons {
@@ -314,6 +287,7 @@
             animation: float 6s ease-in-out infinite;
             position: relative;
             z-index: 2;
+            margin-left: 40px;
         }
 
         @keyframes float {
@@ -548,14 +522,15 @@
 
         /* Discord CTA */
         .discord-cta {
-            background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+            background: linear-gradient(135deg, #4752C4 0%, #5865F2 50%, #7289DA 100%);
             border-radius: var(--radius-xl);
-            padding: 3rem;
+            padding: 4rem 3rem;
             text-align: center;
             margin-top: 3rem;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 20px 60px rgba(71, 82, 196, 0.4);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .discord-cta::before {
@@ -565,13 +540,33 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+            animation: rotateGlow 15s linear infinite;
         }
 
-        @keyframes rotate {
+        .discord-cta::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(114, 137, 218, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(88, 101, 242, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes rotateGlow {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         .discord-cta-content {
@@ -580,38 +575,61 @@
         }
 
         .discord-cta h3 {
-            font-size: 2rem;
+            font-size: 2.25rem;
             color: white;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
         }
 
         .discord-cta p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.0625rem;
-            margin-bottom: 1.75rem;
-            max-width: 560px;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            max-width: 680px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
         }
 
         .discord-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.625rem;
-            padding: 1rem 2rem;
+            gap: 0.75rem;
+            padding: 1.125rem 2.5rem;
             background: white;
-            color: #5865F2;
+            color: #4752C4;
             text-decoration: none;
             border-radius: var(--radius-md);
             font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-md);
+            font-size: 1.0625rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            border: 2px solid white;
+            animation: buttonFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes buttonFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
         }
 
         .discord-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+            background: rgba(255, 255, 255, 0.95);
+            animation: none;
+        }
+
+        .discord-btn span:first-child {
+            font-size: 1.5rem;
+            animation: emojiPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes emojiPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         /* Events Section */
@@ -972,10 +990,6 @@
                 max-width: 100%;
             }
 
-            .hero-stats {
-                justify-content: center;
-            }
-
             .cta-buttons {
                 justify-content: center;
             }
@@ -1018,12 +1032,6 @@
 
             .hero-text .lead {
                 font-size: 1.0625rem;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: center;
             }
 
             .cta-buttons {
@@ -1107,21 +1115,6 @@
             <div class="hero-text">
                 <h1>Innovate. <span class="gradient-text">Connect.</span> Lead.</h1>
                 <p class="lead">The IEEE McMaster Student Branch brings together students interested in engineering, technology, and innovation through hands-on learning, professional development, and interdisciplinary collaboration.</p>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Members</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3</div>
-                        <div class="stat-label">Chapters</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">25+</div>
-                        <div class="stat-label">Events/Year</div>
-                    </div>
-                </div>
 
                 <div class="cta-buttons">
                     <a href="https://discord.com/channels/871533024133644299/1277755119684947988" target="_blank" class="btn btn-primary">
@@ -1158,34 +1151,34 @@
 
             <div class="feature-list fade-in">
                 <div class="feature-item">
-                    <div class="feature-icon">🎓</div>
+                    <div class="feature-icon">💻</div>
                     <div class="feature-content">
-                        <h4>Hands-On Learning</h4>
-                        <p>Develop practical skills through workshops, projects, and technical challenges across multiple engineering disciplines.</p>
+                        <h4>Technical Workshops</h4>
+                        <p>Learn hands-on skills in power electronics, embedded systems, PCB design, medical devices, and more through chapter-led workshops.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🔬</div>
+                    <div class="feature-content">
+                        <h4>Research & Innovation</h4>
+                        <p>Work on cutting-edge projects like AI medical devices, wearable health monitors, IoT systems, and renewable energy technologies.</p>
                     </div>
                 </div>
 
                 <div class="feature-item">
                     <div class="feature-icon">🤝</div>
                     <div class="feature-content">
-                        <h4>Professional Network</h4>
-                        <p>Connect with industry professionals, faculty, and peers through networking events and speaker series.</p>
+                        <h4>Industry Connections</h4>
+                        <p>Network with industry professionals and professors through seminars, connecting members with internship and career opportunities.</p>
                     </div>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-icon">🚀</div>
+                    <div class="feature-icon">📈</div>
                     <div class="feature-content">
-                        <h4>Leadership Opportunities</h4>
-                        <p>Take on executive roles, lead chapter initiatives, and organize technical events to build leadership experience.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">📚</div>
-                    <div class="feature-content">
-                        <h4>IEEE Resources</h4>
-                        <p>Access IEEE publications, standards, conferences, and professional development resources.</p>
+                        <h4>Career Development</h4>
+                        <p>Many members have landed internships thanks to the skills and initiatives developed through IEEE McMaster chapters.</p>
                     </div>
                 </div>
             </div>
@@ -1208,7 +1201,7 @@
                         <div class="chapter-fullname">IEEE Computer Society</div>
                     </div>
                 </div>
-                <p class="chapter-description">Explores modern computing technologies through both software and hardware perspectives. Activities include software development, embedded systems, microcontrollers, and introductory electronics, with an emphasis on practical implementation and technical fundamentals.</p>
+                <p class="chapter-description">The Computer Chapter is all about turning electronics into real-world solutions. Its focus is on embedded software and PCB circuit design. Whether it's crafting with Arduino, innovating with Raspberry Pi, or applying tech across industries, IEEE Computer Society is at the forefront of making electronics work smarter. Members gain hands-on experience through projects that directly apply to industry.</p>
             </div>
 
             <div class="chapter-card fade-in">
@@ -1219,7 +1212,7 @@
                         <div class="chapter-fullname">Power and Energy Society</div>
                     </div>
                 </div>
-                <p class="chapter-description">Focuses on power systems and energy technologies. Members explore topics such as power generation, electrical infrastructure, renewable energy, and sustainability through technical discussions and applied learning opportunities.</p>
+                <p class="chapter-description">The PES Chapter focuses on power electronics, with topics like energy transmission and conversion. Members explore power generation, electrical infrastructure, renewable energy, and related fields such as radio frequency (RF), control systems, and analog system design through technical discussions and hands-on learning.</p>
             </div>
 
             <div class="chapter-card fade-in">
@@ -1230,14 +1223,14 @@
                         <div class="chapter-fullname">Engineering in Medicine & Biology</div>
                     </div>
                 </div>
-                <p class="chapter-description">Examines the intersection of engineering and healthcare. Activities cover biomedical technologies, medical devices, and health-focused engineering applications, emphasizing innovation and interdisciplinary collaboration.</p>
+                <p class="chapter-description">The EMBS Chapter explores the potential of computer and electrical engineering to fill the gaps in healthcare and medicine. Active research projects include AI medical devices, wearable cuffless blood pressure monitors, and more. Members gain hands-on experience in therapeutics, neural engineering, bioinformatics, and related fields.</p>
             </div>
         </div>
 
         <div class="discord-cta fade-in">
             <div class="discord-cta-content">
                 <h3>Ready to Get Involved?</h3>
-                <p>Join our Discord community to stay updated on events, connect with fellow members, and participate in chapter activities. All students are welcome!</p>
+                <p>Join our Discord community to connect with fellow members, access technical workshops, work on hands-on projects, network with industry professionals, and boost your resume. Many members have landed internships thanks to the skills and connections developed through IEEE McMaster.</p>
                 <a href="https://discord.com/channels/871533024133644299/1277755119684947988" target="_blank" class="discord-btn">
                     <span>💬</span>
                     <span>Join Our Discord Server</span>
@@ -1250,7 +1243,7 @@
         <div class="section-header fade-in">
             <div class="section-label">What's Happening</div>
             <h2 class="section-title">Upcoming Events</h2>
-            <p class="section-subtitle">Technical workshops, networking sessions, and hands-on learning opportunities throughout the academic year.</p>
+            <p class="section-subtitle">Technical workshops and hands-on learning opportunities for IEEE McMaster members.</p>
         </div>
 
         <div class="events-grid">
@@ -1287,21 +1280,6 @@
                         <div class="event-meta-item">
                             <span>🕐</span>
                             <span>6:00–8:00 PM</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event-card fade-in">
-                <div class="event-image">🎯</div>
-                <div class="event-content">
-                    <div class="event-date">Coming Soon</div>
-                    <h3 class="event-title">More Events Coming Soon</h3>
-                    <p class="event-description">Additional workshops, speaker sessions, and technical events will be announced throughout the semester. Follow us on Discord for updates.</p>
-                    <div class="event-meta">
-                        <div class="event-meta-item">
-                            <span>📍</span>
-                            <span>Various Locations</span>
                         </div>
                     </div>
                 </div>
