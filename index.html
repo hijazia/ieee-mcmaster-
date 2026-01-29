@@ -62,9 +62,9 @@
         }
 
         .logo-img {
-            width: 60px;
+            width: auto;
             height: 60px;
-            border-radius: 50%;
+            object-fit: contain;
         }
 
         .logo-text {
@@ -748,7 +748,6 @@
             }
 
             .logo-img {
-                width: 50px;
                 height: 50px;
             }
         }
@@ -758,34 +757,7 @@
     <header>
         <nav>
             <div class="logo-container">
-                <svg class="logo-img" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="100" cy="100" r="95" fill="none" stroke="#00629B" stroke-width="8"/>
-                    <path d="M 100 100 L 100 20 A 80 80 0 0 1 100 180 Z" fill="#00629B"/>
-                    <g stroke="white" stroke-width="4" fill="none">
-                        <line x1="50" y1="60" x2="90" y2="60"/>
-                        <line x1="50" y1="80" x2="90" y2="80"/>
-                        <line x1="50" y1="100" x2="90" y2="100"/>
-                        <line x1="50" y1="120" x2="90" y2="120"/>
-                        <line x1="50" y1="140" x2="90" y2="140"/>
-                    </g>
-                    <g fill="white">
-                        <circle cx="50" cy="60" r="4"/>
-                        <circle cx="90" cy="60" r="4"/>
-                        <circle cx="50" cy="80" r="4"/>
-                        <circle cx="90" cy="80" r="4"/>
-                        <circle cx="50" cy="100" r="4"/>
-                        <circle cx="90" cy="100" r="4"/>
-                        <circle cx="50" cy="120" r="4"/>
-                        <circle cx="90" cy="120" r="4"/>
-                        <circle cx="50" cy="140" r="4"/>
-                        <circle cx="90" cy="140" r="4"/>
-                    </g>
-                    <circle cx="100" cy="100" r="8" fill="white"/>
-                </svg>
-                <div class="logo-text">
-                    <span class="main">IEEE MCMASTER</span>
-                    <span class="sub">Student Branch</span>
-                </div>
+                <img src="ieee-mcmaster-logo.png" alt="IEEE McMaster Student Branch Logo" class="logo-img">
             </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
@@ -811,30 +783,7 @@
                 <div class="hero-logo-container">
                     <div class="hero-circle"></div>
                     <div class="hero-circle"></div>
-                    <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="100" cy="100" r="95" fill="none" stroke="#00629B" stroke-width="6"/>
-                        <path d="M 100 100 L 100 20 A 80 80 0 0 1 100 180 Z" fill="#00629B"/>
-                        <g stroke="white" stroke-width="3" fill="none">
-                            <line x1="50" y1="60" x2="90" y2="60"/>
-                            <line x1="50" y1="80" x2="90" y2="80"/>
-                            <line x1="50" y1="100" x2="90" y2="100"/>
-                            <line x1="50" y1="120" x2="90" y2="120"/>
-                            <line x1="50" y1="140" x2="90" y2="140"/>
-                        </g>
-                        <g fill="white">
-                            <circle cx="50" cy="60" r="3"/>
-                            <circle cx="90" cy="60" r="3"/>
-                            <circle cx="50" cy="80" r="3"/>
-                            <circle cx="90" cy="80" r="3"/>
-                            <circle cx="50" cy="100" r="3"/>
-                            <circle cx="90" cy="100" r="3"/>
-                            <circle cx="50" cy="120" r="3"/>
-                            <circle cx="90" cy="120" r="3"/>
-                            <circle cx="50" cy="140" r="3"/>
-                            <circle cx="90" cy="140" r="3"/>
-                        </g>
-                        <circle cx="100" cy="100" r="6" fill="white"/>
-                    </svg>
+                    <img src="ieee-mcmaster-logo.png" alt="IEEE McMaster Student Branch" style="max-width: 400px; max-height: 400px; filter: drop-shadow(0 10px 30px rgba(0, 98, 155, 0.2));">
                 </div>
             </div>
         </div>
