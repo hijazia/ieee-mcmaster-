@@ -173,8 +173,9 @@
             right: 0;
             bottom: 0;
             background-image: 
-                radial-gradient(circle at 20% 50%, rgba(0, 98, 155, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 163, 224, 0.03) 0%, transparent 50%);
+                linear-gradient(90deg, rgba(0, 98, 155, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 98, 155, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
             pointer-events: none;
         }
 
@@ -213,34 +214,6 @@
             margin-bottom: 2.5rem;
             font-weight: 400;
             max-width: 540px;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--ieee-blue);
-            line-height: 1;
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--text-tertiary);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
         .cta-buttons {
@@ -314,6 +287,7 @@
             animation: float 6s ease-in-out infinite;
             position: relative;
             z-index: 2;
+            margin-left: 40px;
         }
 
         @keyframes float {
@@ -972,10 +946,6 @@
                 max-width: 100%;
             }
 
-            .hero-stats {
-                justify-content: center;
-            }
-
             .cta-buttons {
                 justify-content: center;
             }
@@ -1018,12 +988,6 @@
 
             .hero-text .lead {
                 font-size: 1.0625rem;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: center;
             }
 
             .cta-buttons {
@@ -1107,21 +1071,6 @@
             <div class="hero-text">
                 <h1>Innovate. <span class="gradient-text">Connect.</span> Lead.</h1>
                 <p class="lead">The IEEE McMaster Student Branch brings together students interested in engineering, technology, and innovation through hands-on learning, professional development, and interdisciplinary collaboration.</p>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Members</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3</div>
-                        <div class="stat-label">Chapters</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">25+</div>
-                        <div class="stat-label">Events/Year</div>
-                    </div>
-                </div>
 
                 <div class="cta-buttons">
                     <a href="https://discord.com/channels/871533024133644299/1277755119684947988" target="_blank" class="btn btn-primary">
