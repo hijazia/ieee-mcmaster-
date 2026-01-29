@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEEE McMaster Student Branch</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00629B;
+            --accent: #00A8E1;
+            --dark: #0A0E27;
+            --light: #F5F7FA;
+            --electric: #00FFD1;
+            --warm: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(45deg, var(--accent) 1px, transparent 1px),
+                linear-gradient(-45deg, var(--accent) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: patternShift 20s linear infinite;
+        }
+
+        @keyframes patternShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        /* Header/Nav */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(10, 14, 39, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 168, 225, 0.2);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--electric);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--electric);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--electric);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--electric));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: rgba(245, 247, 250, 0.8);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--electric));
+            color: var(--dark);
+            box-shadow: 0 4px 20px rgba(0, 255, 209, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 255, 209, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .ieee-graphic {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(0, 168, 225, 0.1), rgba(0, 255, 209, 0.1));
+            border-radius: 20px;
+            border: 2px solid rgba(0, 168, 225, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ieee-graphic::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 255, 209, 0.1), transparent);
+            animation: rotate 8s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .ieee-logo-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--electric);
+            z-index: 1;
+            text-shadow: 0 0 30px rgba(0, 255, 209, 0.5);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: rgba(245, 247, 250, 0.7);
+            margin-bottom: 4rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(245, 247, 250, 0.85);
+        }
+
+        .about-text h3 {
+            color: var(--electric);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(0, 168, 225, 0.05);
+            border: 1px solid rgba(0, 168, 225, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--electric);
+            box-shadow: 0 10px 30px rgba(0, 255, 209, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--electric));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(245, 247, 250, 0.7);
+            margin-top: 0.5rem;
+        }
+
+        /* Events Section */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: rgba(0, 168, 225, 0.05);
+            border: 1px solid rgba(0, 168, 225, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--electric);
+            box-shadow: 0 15px 40px rgba(0, 255, 209, 0.2);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-date {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--electric);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .event-description {
+            color: rgba(245, 247, 250, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 168, 225, 0.05);
+            border: 1px solid rgba(0, 168, 225, 0.2);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            border-color: var(--electric);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent), var(--electric));
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--electric);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .member-bio {
+            color: rgba(245, 247, 250, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: rgba(0, 168, 225, 0.05);
+            border: 1px solid rgba(0, 168, 225, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--electric);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(10, 14, 39, 0.5);
+            border: 1px solid rgba(0, 168, 225, 0.3);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--electric);
+            box-shadow: 0 0 20px rgba(0, 255, 209, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(0, 168, 225, 0.05);
+            border: 1px solid rgba(0, 168, 225, 0.2);
+            border-radius: 12px;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: var(--electric);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            color: rgba(245, 247, 250, 0.8);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.8);
+            border-top: 1px solid rgba(0, 168, 225, 0.2);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--electric);
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            color: rgba(245, 247, 250, 0.6);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <header>
+        <nav>
+            <div class="logo">IEEE McMaster</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Innovate. <span class="highlight">Connect.</span> Engineer.</h1>
+                <p>Join McMaster's premier student branch of the Institute of Electrical and Electronics Engineers. We're building the future, one project at a time.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Join IEEE</a>
+                    <a href="#events" class="btn btn-secondary">View Events</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="ieee-graphic">
+                    <div class="ieee-logo-text">IEEE</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <p class="section-subtitle">Empowering the next generation of engineers and technologists</p>
+        <div class="about-content">
+            <div class="about-text">
+                <p>IEEE McMaster Student Branch is dedicated to fostering technical excellence and professional development among McMaster University students. As part of the world's largest technical professional organization, we provide members with unique opportunities to network, learn, and grow.</p>
+                
+                <h3>What We Do</h3>
+                <p>We organize technical workshops, industry speaker events, networking sessions, and hands-on projects that bridge the gap between academic theory and real-world application. Our diverse community welcomes students from all engineering disciplines and technical backgrounds.</p>
+                
+                <h3>Why Join?</h3>
+                <p>Gain access to exclusive resources, professional development opportunities, technical publications, and a global network of over 400,000 members across 160+ countries.</p>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Active Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Events Per Year</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Industry Partners</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Technical Workshops</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <h2 class="section-title">Upcoming Events</h2>
+        <p class="section-subtitle">Don't miss out on our exciting lineup of technical events and workshops</p>
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-image">🤖</div>
+                <div class="event-content">
+                    <div class="event-date">FEB 15, 2026</div>
+                    <h3 class="event-title">AI & Machine Learning Workshop</h3>
+                    <p class="event-description">Hands-on introduction to neural networks and deep learning frameworks. Build your first ML model!</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-image">💼</div>
+                <div class="event-content">
+                    <div class="event-date">FEB 22, 2026</div>
+                    <h3 class="event-title">Industry Networking Night</h3>
+                    <p class="event-description">Connect with engineers from leading tech companies. Resume reviews and career advice included.</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-image">⚡</div>
+                <div class="event-content">
+                    <div class="event-date">MAR 1, 2026</div>
+                    <h3 class="event-title">PCB Design Bootcamp</h3>
+                    <p class="event-description">Learn professional circuit board design from concept to fabrication. All skill levels welcome!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="section-subtitle">The dedicated students leading IEEE McMaster</p>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-avatar">JD</div>
+                <h3 class="member-name">Jane Doe</h3>
+                <div class="member-role">Chair</div>
+                <p class="member-bio">4th year Electrical Engineering student passionate about embedded systems and IoT.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">JS</div>
+                <h3 class="member-name">John Smith</h3>
+                <div class="member-role">Vice Chair</div>
+                <p class="member-bio">Computer Engineering student specializing in AI and robotics.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">AL</div>
+                <h3 class="member-name">Alex Lee</h3>
+                <div class="member-role">Treasurer</div>
+                <p class="member-bio">Software Engineering student with a focus on fintech and blockchain.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">SK</div>
+                <h3 class="member-name">Sarah Khan</h3>
+                <div class="member-role">Events Coordinator</div>
+                <p class="member-bio">Engineering Physics student interested in quantum computing and optics.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Have questions? Want to get involved? We'd love to hear from you!</p>
+        <div class="contact-container">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">ieee@mcmaster.ca</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-label">Location</div>
+                    <div class="contact-value">McMaster University<br>Hamilton, ON</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div class="contact-label">Office Hours</div>
+                    <div class="contact-value">Mon-Fri<br>9AM - 5PM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#">📘</a>
+                <a href="#">📷</a>
+                <a href="#">💼</a>
+                <a href="#">🐦</a>
+            </div>
+            <p class="footer-text">&copy; 2026 IEEE McMaster Student Branch. All rights reserved.</p>
+            <p class="footer-text">Part of IEEE Region 7, Canada</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            this.reset();
+        });
+
+        // Add scroll animation to sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
