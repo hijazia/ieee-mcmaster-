@@ -261,6 +261,16 @@
             animation: float 6s ease-in-out infinite;
         }
 
+        .hero-main-logo {
+            width: 500px;
+            height: auto;
+            max-width: 90%;
+            filter: drop-shadow(0 10px 30px rgba(0, 98, 155, 0.2));
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -731,6 +741,18 @@
                 justify-content: center;
             }
 
+            .logo-text .main {
+                font-size: 1rem;
+            }
+
+            .logo-text .sub {
+                font-size: 0.65rem;
+            }
+
+            .logo-img {
+                height: 50px;
+            }
+
             .cta-buttons {
                 flex-direction: column;
             }
@@ -758,6 +780,10 @@
         <nav>
             <div class="logo-container">
                 <img src="ieee-mcmaster-logo.png" alt="IEEE McMaster Student Branch Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="main">IEEE MCMASTER</span>
+                    <span class="sub">Student Branch</span>
+                </div>
             </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
@@ -783,7 +809,7 @@
                 <div class="hero-logo-container">
                     <div class="hero-circle"></div>
                     <div class="hero-circle"></div>
-                    <img src="ieee-mcmaster-logo.png" alt="IEEE McMaster Student Branch" style="max-width: 400px; max-height: 400px; filter: drop-shadow(0 10px 30px rgba(0, 98, 155, 0.2));">
+                    <img src="ieee-mcmaster-logo.png" alt="IEEE McMaster Student Branch" class="hero-main-logo">
                 </div>
             </div>
         </div>
